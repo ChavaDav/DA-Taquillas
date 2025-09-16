@@ -118,7 +118,7 @@
 </head>
 <body>
 
-  <form class="form-container" action="destino.html" method="POST">
+  <form class="form-container" action="" method="">
     <h2>Formulario de Contacto</h2>
     <label for="delega">Representante de alumnos:</label>
     <input type="text" name="delega" id="delega" required>
@@ -145,7 +145,7 @@
       <label for="acepto">Acepto los términos</label>
     </div>
 
-    <button type="submit">Enviar</button>
+    <button type="submit" id="submit">Enviar</button>
   </form>
 
   <!-- Popup Modal -->
@@ -180,6 +180,10 @@
         popupModal.style.display = 'none';
       }
     };
+    document.getElementById("submit").onclick = (event) => {
+      event.preventDefault();
+      window.location.href = window.location.origin + '/about';
+    };  
   </script>
 
 </body>
