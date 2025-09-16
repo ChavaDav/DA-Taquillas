@@ -4,7 +4,7 @@ const app = express();
 const port = 2000;
 const mainRoutes = require('./routes/mainRoutes');
 
-//require('./db/connection');
+require('./db/connection');
 
 app.use(express.static('views'));
 
