@@ -1,13 +1,15 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const port = 2000;
+const mainRoutes = require('./routes/mainRoutes');
 
-app.set("view engine","html");
+//require('./db/connection');
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
+app.use(express.static('views'));
 
-app.listen(2000, () => {
-  console.log('Servidor escuchando en http://localhost:2000');
+app.use('/', mainRoutes);
+
+app.listen(port, () => {
+  console.log('Servidor escuchando en http://localhost:'+ port);
 });
