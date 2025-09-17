@@ -8,8 +8,9 @@ To ensure smooth setup and avoid issues with Node modules, they are not included
 
 ```bash
 npm init -y
-npm install express
-npm install mongoose
+npm install express mysql2 body-parser
 ```
 
 These commands will initialize the project and install the necessary modules for the application to work correctly.
+
+Por otro lado para el apartado de la base de datos he decidido usar phpmyadmin y mysql para la correcta gestion de la base de datos
