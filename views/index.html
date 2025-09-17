@@ -66,7 +66,7 @@
     button {
       width: 100%;
       padding: 12px;
-      background: #28a745;
+      background: #15449c;
       color: white;
       border: none;
       border-radius: 5px;
@@ -75,7 +75,7 @@
     }
 
     button:hover {
-      background: #218838;
+      background: #28a745;
     }
 
     /* Modal Styles */
@@ -118,7 +118,7 @@
 </head>
 <body>
 
-  <form class="form-container" action="" method="">
+  <form class="form-container" id="formulario" action="" method="">
     <h2>Formulario de Contacto</h2>
     <label for="delega">Representante de alumnos:</label>
     <input type="text" name="delega" id="delega" required>
@@ -129,10 +129,10 @@
     <label for="DNI">DNI:</label>
     <input type="text" name="DNI" id="DNI" required>
 
-    <label for="ntaquillas">Taquilla Nº:</label>
-    <input type="number" name="ntaquillas" id="ntaquillas" required>
+    <label for="ntaquilla">Taquilla Nº:</label>
+    <input type="number" name="ntaquilla" id="ntaquilla" required>
 
-    <label for="ntaquillas">Tiempo de Uso</label>
+    <label for="opciones">Tiempo de Uso</label>
     <select name="opciones" id="opciones">
         <option value="Anual">Anual</option>
         <option value="Mensual">Mensual</option>
@@ -157,15 +157,16 @@
     </div>
   </div>
 
+
   <script>
     const abrirPopup = document.getElementById('abrirPopup');
     const cerrarPopup = document.getElementById('cerrarPopup');
     const popupModal = document.getElementById('popupModal');
+    const opciones = document.getElementById('opciones').value;
 
     abrirPopup.onclick = () => {
       popupModal.style.display = 'block';
         const ntaquilla = document.getElementById('ntaquillas').value;
-        const opciones = document.getElementById('opciones').value;
         document.getElementById('AcuerdoDeUso').innerHTML=
         "Se formaliza el presente de la taquilla número " + ntaquilla +" de forma "+ opciones+ " ,conociendo ambas partes cada uno de los puntos de la Normativa de Uso de Taquillas. Así mismo ambas partes convienen, que en caso de que se aplique, una vez pagada la señal de fianza de 5€ en concepto de donación a la Delegacion de Alumnos , se ha pagado también la cantidad de 3€ en caso de contrato semestral y 5€ en caso de contrato anual, y para quue así conste en todos los efectos que procedan firman el presente documento, siendo el mismo justificante del pago anteriormente explicado."
         ;
@@ -180,10 +181,43 @@
         popupModal.style.display = 'none';
       }
     };
-    document.getElementById("submit").onclick = (event) => {
-      event.preventDefault();
-      window.location.href = window.location.origin + '/about';
-    };  
+    
+
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const datos = {
+        nombre: formData.get('nombre'),
+        delega: formData.get('delega'),
+        DNI: formData.get('DNI'),
+        ntaquilla: formData.get('ntaquilla'),
+        opciones: formData.get('opciones')
+      };
+
+      try {
+        const respuesta = await fetch('http://localhost:2000/guardar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(datos)
+        });
+
+        if (respuesta.ok) {
+          window.alert('✅ Datos guardados correctamente');
+          form.reset(); 
+        } else {
+          const errorText = await respuesta.text();
+          window.alert('❌ Error al guardar los datos: ' + errorText);
+         
+        }
+      } catch (error) {
+        window.alert('❌ Error de conexión');
+      }
+    });
   </script>
 
 </body>
