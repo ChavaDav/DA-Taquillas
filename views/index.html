@@ -10,8 +10,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      height: 100%;
+      margin: 10px 0 0 0;
     }
 
     .form-container {
@@ -126,11 +126,14 @@
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" id="nombre" required>
 
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" id="nombre" required>
-
     <label for="DNI">DNI:</label>
     <input type="text" name="DNI" id="DNI" required>
+
+    <label for="telefono">Nº telefono:</label>
+    <input type="text" name="telefono" id="telefono" required>
+
+    <label for="email">email:</label>
+    <input type="text" name="email" id="email" required>
 
     <label for="ntaquilla">Taquilla Nº:</label>
     <input type="number" name="ntaquilla" id="ntaquilla" required>
@@ -189,8 +192,10 @@
         nombre: formData.get('nombre'),
         delega: formData.get('delega'),
         DNI: formData.get('DNI'),
-        ntaquilla: formData.get('ntaquilla'),
-        opciones: formData.get('opciones')
+        telefono: formData.get('telefono'),
+        email: formData.get('email'),
+        ntaquilla: formData.get('ntaquilla')
+        
       };
 
       try {
