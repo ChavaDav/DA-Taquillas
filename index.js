@@ -19,14 +19,14 @@ app.listen(port, () => {
 });
 
 app.post('/guardar', async (req, res) => {
-  const { nombre, delega, DNI, ntaquilla, opciones } = req.body;
+  const { nombre, delega, DNI, ntaquilla } = req.body;
 
   try {
     const connection = await conectarMySQL();
 
     await connection.execute(
-      'INSERT INTO users (nombre, delega , DNI, ntaquilla, opciones) VALUES (?, ?, ?, ?, ?)',
-      [nombre, delega, DNI, ntaquilla, opciones]
+      'INSERT INTO users (nombre, delega , DNI, ntaquilla) VALUES (?, ?, ?, ?)',
+      [nombre, delega, DNI, ntaquilla]
     );
 
     await connection.end();

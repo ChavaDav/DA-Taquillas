@@ -126,17 +126,14 @@
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" id="nombre" required>
 
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required>
+
     <label for="DNI">DNI:</label>
     <input type="text" name="DNI" id="DNI" required>
 
     <label for="ntaquilla">Taquilla Nº:</label>
     <input type="number" name="ntaquilla" id="ntaquilla" required>
-
-    <label for="opciones">Tiempo de Uso</label>
-    <select name="opciones" id="opciones">
-        <option value="Anual">Anual</option>
-        <option value="Mensual">Mensual</option>
-    </select>
 
     <span class="link-popup" id="abrirPopup">Ver términos y condiciones</span>
 
@@ -162,13 +159,12 @@
     const abrirPopup = document.getElementById('abrirPopup');
     const cerrarPopup = document.getElementById('cerrarPopup');
     const popupModal = document.getElementById('popupModal');
-    const opciones = document.getElementById('opciones').value;
 
     abrirPopup.onclick = () => {
       popupModal.style.display = 'block';
-        const ntaquilla = document.getElementById('ntaquillas').value;
+        const ntaquilla = document.getElementById('ntaquilla').value;
         document.getElementById('AcuerdoDeUso').innerHTML=
-        "Se formaliza el presente de la taquilla número " + ntaquilla +" de forma "+ opciones+ " ,conociendo ambas partes cada uno de los puntos de la Normativa de Uso de Taquillas. Así mismo ambas partes convienen, que en caso de que se aplique, una vez pagada la señal de fianza de 5€ en concepto de donación a la Delegacion de Alumnos , se ha pagado también la cantidad de 3€ en caso de contrato semestral y 5€ en caso de contrato anual, y para quue así conste en todos los efectos que procedan firman el presente documento, siendo el mismo justificante del pago anteriormente explicado."
+        "Se formaliza el presente de la taquilla número " + ntaquilla +" de forma anual ,conociendo ambas partes cada uno de los puntos de la Normativa de Uso de Taquillas. Así mismo ambas partes convienen, que en caso de que se aplique, una vez pagada la señal de fianza de 5€ en concepto de donación a la Delegacion de Alumnos , se ha pagado también la cantidad de 3€ en caso de contrato semestral y 5€ en caso de contrato anual, y para quue así conste en todos los efectos que procedan firman el presente documento, siendo el mismo justificante del pago anteriormente explicado."
         ;
     };
 
