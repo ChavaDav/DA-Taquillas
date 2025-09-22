@@ -188,7 +188,53 @@
       e.preventDefault();
 
       const formData = new FormData(form);
-      const datos = {
+      
+      function validarFormulario(formData) {
+    const nombre = formData.get('nombre');
+    const delega = formData.get('delega');
+    const DNI = formData.get('DNI');
+    const telefono = formData.get('telefono');
+    const email = formData.get('email');
+    const ntaquilla = formData.get('ntaquilla');
+
+    const errores = [];
+
+    const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+    if (!nombre || !regexNombre.test(nombre)) {
+        errores.push("El nombre es inválido.");
+    }
+    if (!delega || !regexNombre.test(delega)) {
+        errores.push("La delegación es inválida.");
+    }
+
+    const regexDNI = /^\d{8}[A-Za-z]$/;
+    if (!DNI || !regexDNI.test(DNI)) {
+        errores.push("El DNI es inválido.");
+    }
+
+    const regexTelefono = /^\d{9}$/;
+    if (!telefono || !regexTelefono.test(telefono)) {
+        errores.push("El teléfono es inválido.");
+    }
+
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !regexEmail.test(email)) {
+        errores.push("El email es inválido.");
+    }
+
+    if (!ntaquilla || isNaN(ntaquilla) || parseInt(ntaquilla) < 0) {
+        errores.push("La número de taquilla es inválido.");
+    }
+
+    return {
+        valido: errores.length === 0,
+        errores: errores
+    };
+}
+      const resultadoComprobacion = validarFormulario(formData);
+      if(resultadoComprobacion.valido)
+      {
+        const datos = {
         nombre: formData.get('nombre'),
         delega: formData.get('delega'),
         DNI: formData.get('DNI'),
@@ -197,6 +243,10 @@
         ntaquilla: formData.get('ntaquilla')
         
       };
+      }else{
+        window.alert('❌ Error al introducir datos');
+      }
+      
 
       try {
         const respuesta = await fetch('http://localhost:2000/guardar', {
