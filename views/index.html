@@ -77,10 +77,8 @@
     button:hover {
       background: #28a745;
     }
-
-    /* Modal Styles */
     .modal {
-      display: none; /* hidden by default */
+      display: none;
       position: fixed;
       z-index: 1000;
       left: 0;
@@ -183,10 +181,9 @@
     
 
     const form = document.getElementById('formulario');
-
+    var datos;
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      console.log("PRimero");
       const formData = new FormData(form);
       
       function validarFormulario(formData) {
@@ -198,7 +195,6 @@
         let ntaquilla = formData.get('ntaquilla');
 
     const errores = [];
-        console.log("Segunda");
     const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
     if (!nombre || !regexNombre.test(nombre)) {
         errores.push("El nombre es inválido.");
@@ -232,10 +228,10 @@
     };
 }
       const resultadoComprobacion = validarFormulario(formData);
-      console.log("Tercero");
       if(resultadoComprobacion.valido)
       {
-        const datos = {
+        console.log("entra");
+        datos = {
         nombre: formData.get('nombre'),
         delega: formData.get('delega'),
         DNI: formData.get('DNI'),
