@@ -186,19 +186,19 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
+      console.log("PRimero");
       const formData = new FormData(form);
       
       function validarFormulario(formData) {
-    const nombre = formData.get('nombre');
-    const delega = formData.get('delega');
-    const DNI = formData.get('DNI');
-    const telefono = formData.get('telefono');
-    const email = formData.get('email');
-    const ntaquilla = formData.get('ntaquilla');
+        let nombre = formData.get('nombre');
+        let delega = formData.get('delega');
+        let DNI = formData.get('DNI');
+        let telefono = formData.get('telefono');
+        let email = formData.get('email');
+        let ntaquilla = formData.get('ntaquilla');
 
     const errores = [];
-
+        console.log("Segunda");
     const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
     if (!nombre || !regexNombre.test(nombre)) {
         errores.push("El nombre es inválido.");
@@ -232,6 +232,7 @@
     };
 }
       const resultadoComprobacion = validarFormulario(formData);
+      console.log("Tercero");
       if(resultadoComprobacion.valido)
       {
         const datos = {

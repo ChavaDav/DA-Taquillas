@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 const express = require('express');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3306;
 
 // Middleware para recibir JSON
 app.use(express.json());
@@ -12,7 +12,7 @@ async function conectarMySQL() {
   try {
     const connection = await mysql.createConnection({
       host: 'localhost',
-      port: 3306,
+      port: PORT,
       user: 'root',
       password: 'root',
       database: 'taquillas'

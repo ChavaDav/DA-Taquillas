@@ -26,11 +26,12 @@ The following columns have been defined in the `users` table:
 
 ```sql
 CREATE TABLE `users` (
-  `nombre` varchar(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `id` int NOT NULL,
   `delega` varchar(20) NOT NULL,
   `DNI` varchar(9) NOT NULL,
-  `ntaquilla` int NOT NULL,
-  `opciones` varchar(7) NOT NULL
+  `telefono` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `ntaquilla` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 ```
