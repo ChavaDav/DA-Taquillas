@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 });
 
 // Puedes agregar más rutas aquí
-router.get('/about', (req, res) => {
+/*router.get('/about', (req, res) => {
   res.send('<h2>Esta es la página "Acerca de"</h2>');
-});
+});*/
 
 module.exports = router;
