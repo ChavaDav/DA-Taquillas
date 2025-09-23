@@ -18,7 +18,10 @@ These commands will initialize the project and install the necessary modules for
 For the database, I decided to use **phpMyAdmin** and **MySQL** for proper database management. The setup was done using **Docker containers** with the following commands
 
 ```bash
+docker network create my-network 
+
 docker run -d --name mysql-container --network my-network -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=mydatabase -p 3306:3306 mysql
+
 docker run -d --name phpadmin-container --network my-network -e PMA_HOST=mysql-container -e PMA_PORT=3306 -p 8080:80 phpmyadmin/phpmyadmin
 ```
 
