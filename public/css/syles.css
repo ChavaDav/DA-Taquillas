@@ -23,6 +23,11 @@
       color: #333;
     }
 
+    img
+    {
+      width: 100%;
+    }
+
     label {
       display: block;
       margin-bottom: 5px;
@@ -106,3 +111,11 @@
     .close:hover {
       color: #000;
     }
+
+    @media only screen and (max-width: 600px) {
+    body {
+      background-color: rgb(255, 255, 255);
+      border: none;
+      box-shadow: none;
+    }
+  }
