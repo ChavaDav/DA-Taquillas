@@ -71,7 +71,6 @@
       const resultadoComprobacion = validarFormulario(formData);
       if(resultadoComprobacion.valido)
       {
-        console.log("entra");
         datos = {
         nombre: formData.get('nombre'),
         delega: formData.get('delega'),

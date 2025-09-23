@@ -19,14 +19,14 @@ app.listen(port, () => {
 });
 
 app.post('/existe', async (req, res) => {
-  const { DNI, email } = req.body;
+  const { ntaquilla } = req.body;
 
   try {
     const connection = await conectarMySQL();
 
     const [filas] = await connection.execute(
-      'SELECT * FROM users WHERE DNI = ? OR email = ?',
-      [DNI, email]
+      'SELECT * FROM users WHERE ntaquilla = ?',
+      [ntaquilla]
     );
 
     await connection.end();
