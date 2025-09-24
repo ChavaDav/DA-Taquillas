@@ -25,7 +25,7 @@ app.post('/existe', async (req, res) => {
     const connection = await conectarMySQL();
 
     const [filas] = await connection.execute(
-      'SELECT * FROM users WHERE ntaquilla = ?',
+      'SELECT nombre,id,delega,DNI,telefono,email,ntaquilla FROM users WHERE ntaquilla = ?',
       [ntaquilla]
     );
 
